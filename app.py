@@ -9,8 +9,16 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"),
 
 @app.message("Hi dc-bot!")
 def message_hello(message, say):
-    say(f"Hi <@{message['user']}>!\nI am DC-bot. Hope you can teach me how to talk at the dev meetup on Nov 21!")
+    say(f"Hi <@{message['user']}>! My name is DC-bot.")
 
+@app.event("app_mention")
+def respond_to_mention(body, say):
+    if body["event"]["text"].lower() == "dev meetup":
+        say("The dev meetup will be help on November 21")
+    elif body["event"]["text"].lower() == "team activity":
+        say("The team activity will be to give me a voice")
+    elif body["event"]["text"].lower() == "code":
+        say("My code is available at https://github.com/ScilifelabDataCentre/dc-bot")
 
 # Start your app
 if __name__ == "__main__":
