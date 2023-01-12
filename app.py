@@ -1,7 +1,7 @@
 import os
 
 from slack_bolt import App
-from slack_bolt.adapter.socket_mode import SocketModeHandler
+#from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 import helpers
 
@@ -84,5 +84,5 @@ def respond_to_channel_join(body, say, logger):
 
 # Start your app
 if __name__ == "__main__":
-    #    app.start(port=int(os.environ.get("PORT", 3000)))
-    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
+    app.start(port=int(os.environ.get("PORT", 3000)))
+#    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
